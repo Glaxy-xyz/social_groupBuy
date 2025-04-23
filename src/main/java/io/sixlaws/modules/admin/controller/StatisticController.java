@@ -21,12 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * 后台前端首页数据统计
- *
- * @author linfeng
- * @date 2022/4/17 16:49
- */
+
 @RestController
 @RequestMapping("admin/statistics")
 @Api(tags = "管理端——数据统计")

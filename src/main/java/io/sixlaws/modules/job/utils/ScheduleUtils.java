@@ -11,7 +11,7 @@
  */
 package io.sixlaws.modules.job.utils;
 
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.utils.Constant;
 import io.sixlaws.modules.job.entity.ScheduleJobEntity;
 import org.quartz.*;
@@ -44,7 +44,7 @@ public class ScheduleUtils {
         try {
             return (CronTrigger) scheduler.getTrigger(getTriggerKey(jobId));
         } catch (SchedulerException e) {
-            throw new LinfengException("获取定时任务CronTrigger出现异常", e);
+            throw new Exception("获取定时任务CronTrigger出现异常", e);
         }
     }
 
@@ -73,7 +73,7 @@ public class ScheduleUtils {
             	pauseJob(scheduler, scheduleJob.getJobId());
             }
         } catch (SchedulerException e) {
-            throw new LinfengException("创建定时任务失败", e);
+            throw new Exception("创建定时任务失败", e);
         }
     }
     
@@ -104,7 +104,7 @@ public class ScheduleUtils {
             }
             
         } catch (SchedulerException e) {
-            throw new LinfengException("更新定时任务失败", e);
+            throw new Exception("更新定时任务失败", e);
         }
     }
 
@@ -119,7 +119,7 @@ public class ScheduleUtils {
         	
             scheduler.triggerJob(getJobKey(scheduleJob.getJobId()), dataMap);
         } catch (SchedulerException e) {
-            throw new LinfengException("立即执行定时任务失败", e);
+            throw new Exception("立即执行定时任务失败", e);
         }
     }
 
@@ -130,7 +130,7 @@ public class ScheduleUtils {
         try {
             scheduler.pauseJob(getJobKey(jobId));
         } catch (SchedulerException e) {
-            throw new LinfengException("暂停定时任务失败", e);
+            throw new Exception("暂停定时任务失败", e);
         }
     }
 
@@ -141,7 +141,7 @@ public class ScheduleUtils {
         try {
             scheduler.resumeJob(getJobKey(jobId));
         } catch (SchedulerException e) {
-            throw new LinfengException("暂停定时任务失败", e);
+            throw new Exception("暂停定时任务失败", e);
         }
     }
 
@@ -152,7 +152,7 @@ public class ScheduleUtils {
         try {
             scheduler.deleteJob(getJobKey(jobId));
         } catch (SchedulerException e) {
-            throw new LinfengException("删除定时任务失败", e);
+            throw new Exception("删除定时任务失败", e);
         }
     }
 }

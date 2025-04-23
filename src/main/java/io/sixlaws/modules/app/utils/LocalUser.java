@@ -25,11 +25,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
-/**
- * 获取登录用户信息，如果未登录返回空
- * @author linfeng
- * @date 2022/6/9 22:38
- */
+
 @Component
 public class LocalUser {
 

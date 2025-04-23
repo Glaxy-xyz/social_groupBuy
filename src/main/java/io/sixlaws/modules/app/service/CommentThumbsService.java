@@ -19,13 +19,7 @@ import io.sixlaws.modules.app.param.AddThumbsForm;
 
 import java.util.Map;
 
-/**
- * 
- *
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-25 19:00:24
- */
+
 public interface CommentThumbsService extends IService<CommentThumbsEntity> {
 
     PageUtils queryPage(Map<String, Object> params);

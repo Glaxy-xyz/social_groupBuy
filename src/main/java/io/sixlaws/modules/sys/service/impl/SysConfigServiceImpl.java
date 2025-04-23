@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.utils.PageUtils;
 import io.sixlaws.common.utils.Query;
 import io.sixlaws.modules.sys.dao.SysConfigDao;
@@ -46,21 +46,21 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigDao, SysConfigEnt
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@Transactional(rollbackFor = java.lang.Exception.class)
 	public void update(SysConfigEntity config) {
 		this.updateById(config);
 		sysConfigRedis.saveOrUpdate(config);
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@Transactional(rollbackFor = java.lang.Exception.class)
 	public void updateValueByKey(String key, String value) {
 		baseMapper.updateValueByKey(key, value);
 		sysConfigRedis.delete(key);
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@Transactional(rollbackFor = java.lang.Exception.class)
 	public void deleteBatch(Long[] ids) {
 		for(Long id : ids){
 			SysConfigEntity config = this.getById(id);
@@ -90,8 +90,8 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigDao, SysConfigEnt
 
 		try {
 			return clazz.newInstance();
-		} catch (Exception e) {
-			throw new LinfengException("获取参数失败");
+		} catch (java.lang.Exception e) {
+			throw new Exception("获取参数失败");
 		}
 	}
 }

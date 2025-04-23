@@ -20,13 +20,7 @@ import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
-/**
- * 
- * 
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-23 20:49:55
- */
+
 @Data
 @TableName("lf_post")
 public class PostEntity implements Serializable {

@@ -18,13 +18,7 @@ import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
-/**
- * 
- * 
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-25 19:00:24
- */
+
 @Data
 @TableName("lf_comment_thumbs")
 public class CommentThumbsEntity implements Serializable {

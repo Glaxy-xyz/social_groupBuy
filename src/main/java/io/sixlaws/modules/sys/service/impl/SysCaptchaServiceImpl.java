@@ -5,7 +5,7 @@ package io.sixlaws.modules.sys.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.code.kaptcha.Producer;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.utils.DateUtils;
 import io.sixlaws.modules.sys.dao.SysCaptchaDao;
 import io.sixlaws.modules.sys.entity.SysCaptchaEntity;
@@ -29,7 +29,7 @@ public class SysCaptchaServiceImpl extends ServiceImpl<SysCaptchaDao, SysCaptcha
     @Override
     public BufferedImage getCaptcha(String uuid) {
         if(StringUtils.isBlank(uuid)){
-            throw new LinfengException("uuid不能为空");
+            throw new Exception("uuid不能为空");
         }
         //生成文字验证码
         String code = producer.createText();

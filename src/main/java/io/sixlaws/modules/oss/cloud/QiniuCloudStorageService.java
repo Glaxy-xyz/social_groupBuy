@@ -5,7 +5,7 @@ import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -39,8 +39,8 @@ public class QiniuCloudStorageService extends CloudStorageService {
             if (!res.isOK()) {
                 throw new RuntimeException("上传七牛出错：" + res.toString());
             }
-        } catch (Exception e) {
-            throw new LinfengException("上传文件失败，请核对七牛配置信息", e);
+        } catch (java.lang.Exception e) {
+            throw new Exception("上传文件失败，请核对七牛配置信息", e);
         }
 
         return config.getQiniuDomain() + "/" + path;
@@ -52,7 +52,7 @@ public class QiniuCloudStorageService extends CloudStorageService {
             byte[] data = IOUtils.toByteArray(inputStream);
             return this.upload(data, path);
         } catch (IOException e) {
-            throw new LinfengException("上传文件失败", e);
+            throw new Exception("上传文件失败", e);
         }
     }
 

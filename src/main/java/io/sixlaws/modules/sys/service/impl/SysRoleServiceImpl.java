@@ -4,7 +4,7 @@ package io.sixlaws.modules.sys.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.utils.Constant;
 import io.sixlaws.common.utils.PageUtils;
 import io.sixlaws.common.utils.Query;
@@ -53,7 +53,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRoleEntity> i
 	}
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void saveRole(SysRoleEntity role) {
         role.setCreateTime(new Date());
         this.save(role);
@@ -66,7 +66,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRoleEntity> i
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void update(SysRoleEntity role) {
         this.updateById(role);
 
@@ -78,7 +78,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRoleEntity> i
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void deleteBatch(Long[] roleIds) {
         //删除角色
         this.removeByIds(Arrays.asList(roleIds));
@@ -110,7 +110,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRoleEntity> i
 		
 		//判断是否越权
 		if(!menuIdList.containsAll(role.getMenuIdList())){
-			throw new LinfengException("新增角色的权限，已超出你的权限范围");
+			throw new Exception("新增角色的权限，已超出你的权限范围");
 		}
 	}
 }

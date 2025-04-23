@@ -16,13 +16,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import lombok.Data;
 
-/**
- * 
- * 
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-24 20:49:32
- */
+
 @Data
 @TableName("lf_post_collection")
 public class PostCollectionEntity implements Serializable {

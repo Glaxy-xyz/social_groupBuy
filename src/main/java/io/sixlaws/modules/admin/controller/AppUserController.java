@@ -26,13 +26,7 @@ import io.sixlaws.common.utils.R;
 
 
 
-/**
- * 
- * 管理端——会员管理
- * @author linfeng
- * @email 2445465217@qq.com
- * @date 2022-01-20 12:10:43
- */
+
 @Api(tags = "管理端——会员管理")
 @RestController
 @RequestMapping("admin/user")

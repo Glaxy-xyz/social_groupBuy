@@ -11,7 +11,7 @@
  */
 package io.sixlaws.common.aspect;
 
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -38,9 +38,9 @@ public class RedisAspect {
         if(open){
             try{
                 result = point.proceed();
-            }catch (Exception e){
+            }catch (java.lang.Exception e){
                 logger.error("redis error", e);
-                throw new LinfengException("Redis服务异常");
+                throw new Exception("Redis服务异常");
             }
         }
         return result;

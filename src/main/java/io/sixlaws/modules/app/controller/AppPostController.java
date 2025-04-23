@@ -30,10 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
-/**
- * @author linfeng
- * @date 2022/7/27 14:18
- */
+
 @Api(tags = "用户端——帖子")
 @RestController
 @RequestMapping("app/post")

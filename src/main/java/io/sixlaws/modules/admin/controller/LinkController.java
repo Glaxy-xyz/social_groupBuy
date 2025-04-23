@@ -28,13 +28,7 @@ import io.sixlaws.common.utils.R;
 
 
 
-/**
- * 管理端——轮播图管理
- *
- * @author linfeng
- * @email 2445465217@qq.com
- * @date 2022-01-26 14:05:38
- */
+
 @Api(tags = "管理端——轮播图管理")
 @RestController
 @RequestMapping("admin/link")

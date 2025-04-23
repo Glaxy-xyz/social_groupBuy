@@ -8,11 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Date工具类
- * @author linfeng
- * @date 2022/1/20 13:38
- */
+
 public final class DateUtil {
 
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";

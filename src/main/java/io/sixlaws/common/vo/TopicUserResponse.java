@@ -18,13 +18,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 
- * 
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-20 12:10:43
- */
+
 @Data
 @JsonIgnoreProperties(value = {"password"})
 public class TopicUserResponse implements Serializable {

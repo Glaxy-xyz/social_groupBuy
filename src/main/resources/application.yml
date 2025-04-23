@@ -10,7 +10,7 @@ server:
 
 spring:
   application:
-    name: linfeng-community-ky
+    name: sixlaws-community-ky
   # 环境 dev|test|prod
   profiles:
     active: dev
@@ -71,7 +71,7 @@ task:
     # 队列容量
     queue-capacity: 50
 
-linfeng:
+sixlaws:
   jwt:
     # 加密秘钥
     secret: f4e2e52099998f86b67cde581c0f9eb5

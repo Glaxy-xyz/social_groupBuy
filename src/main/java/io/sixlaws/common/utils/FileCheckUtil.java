@@ -1,6 +1,6 @@
 package io.sixlaws.common.utils;
 
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 
 /**
  * @author linfeng
@@ -12,7 +12,7 @@ public class FileCheckUtil {
         // 单位 M
         int len = 1024 * 1024;
         if(size > (maxSize * len)){
-            throw new LinfengException("上传文件超出规定大小");
+            throw new Exception("上传文件超出规定大小");
         }
     }
 }

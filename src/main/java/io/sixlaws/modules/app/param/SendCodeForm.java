@@ -11,10 +11,7 @@
  */
 package io.sixlaws.modules.app.param;
 
-/**
- * @author linfeng
- * @date 2022/7/27 11:12
- */
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

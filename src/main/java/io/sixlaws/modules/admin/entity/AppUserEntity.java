@@ -22,13 +22,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-/**
- * 
- * 
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-20 12:10:43
- */
+
 @Data
 @TableName("lf_user")
 @JsonIgnoreProperties(value = {"password"})

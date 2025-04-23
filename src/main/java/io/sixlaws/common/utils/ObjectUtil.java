@@ -1,10 +1,6 @@
 package io.sixlaws.common.utils;
 
-/**
- * 对象工具类
- * @author linfeng
- * @date 2022/11/4 9:49
- */
+
 public class ObjectUtil {
 
     /**

@@ -32,10 +32,10 @@ import java.util.List;
 @EnableSwagger2
 public class SwaggerConfig implements WebMvcConfigurer {
 
-    @Value("${linfeng.swagger.enable}")
+    @Value("${sixlaws.swagger.enable}")
     private Boolean enable;
 
-    @Value("${linfeng.swagger.version}")
+    @Value("${sixlaws.swagger.version}")
     private String version;
 
 
@@ -54,9 +54,9 @@ public class SwaggerConfig implements WebMvcConfigurer {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("林风社交论坛开源版接口文档")
-                .description("林风社交论坛项目开源版接口文档 官网：https://net.linfeng.tech")
-                .contact(new Contact("linfeng","http://localhost:8080/doc.html","linfengtech001@163.com"))
+                .title("接口文档")
+                .description("接口文档 ")
+                .contact(new Contact("sixlaws","http://localhost:8080/doc.html", null))
                 .version(version)
                 .build();
 

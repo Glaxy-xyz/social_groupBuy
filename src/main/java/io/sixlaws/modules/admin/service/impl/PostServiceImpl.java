@@ -15,7 +15,7 @@ package io.sixlaws.modules.admin.service.impl;
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.vo.PostDetailResponse;
 import io.sixlaws.common.vo.PostListResponse;
 import io.sixlaws.common.utils.*;
@@ -92,12 +92,12 @@ public class PostServiceImpl extends ServiceImpl<PostDao, PostEntity> implements
 
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void deleteByAdmin(List<Integer> ids) {
 
         boolean remove = this.removeByIds(ids);
         if (!remove) {
-            throw new LinfengException("批量删除失败");
+            throw new Exception("批量删除失败");
         }
     }
 
@@ -134,11 +134,11 @@ public class PostServiceImpl extends ServiceImpl<PostDao, PostEntity> implements
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void addCollection(AddCollectionForm request, AppUserEntity user) {
         Boolean collection = postCollectionService.isCollection(user.getUid(), request.getId());
         if(collection){
-            throw new LinfengException("请勿重复点赞");
+            throw new Exception("请勿重复点赞");
         }
         PostCollectionEntity pc=new PostCollectionEntity();
         pc.setPostId(request.getId());
@@ -174,7 +174,7 @@ public class PostServiceImpl extends ServiceImpl<PostDao, PostEntity> implements
     public PostDetailResponse detail(Integer id) {
         PostEntity post = this.getById(id);
         if(ObjectUtil.isNull(post)){
-            throw new LinfengException("该帖子不存在或已删除");
+            throw new Exception("该帖子不存在或已删除");
         }
         updatePv(post);
         PostDetailResponse response=new PostDetailResponse();
@@ -197,7 +197,7 @@ public class PostServiceImpl extends ServiceImpl<PostDao, PostEntity> implements
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void addComment(AddCommentForm request, AppUserEntity user) {
         checkUserStatus(user);
         CommentEntity commentEntity=new CommentEntity();
@@ -209,7 +209,7 @@ public class PostServiceImpl extends ServiceImpl<PostDao, PostEntity> implements
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public Integer addPost(AddPostForm request, AppUserEntity user) {
         checkUserStatus(user);
         PostEntity post=new PostEntity();
@@ -268,10 +268,10 @@ public class PostServiceImpl extends ServiceImpl<PostDao, PostEntity> implements
     public void deleteMyPost(DeletePostForm request, AppUserEntity user) {
         PostEntity post = this.getById(request.getId());
         if(post==null){
-            throw new LinfengException("帖子不存在");
+            throw new Exception("帖子不存在");
         }
         if(!post.getUid().equals(user.getUid())){
-            throw new LinfengException("不能删除别人帖子");
+            throw new Exception("不能删除别人帖子");
         }
         this.removeById(request.getId());
         //关联业务处理todo
@@ -292,7 +292,7 @@ public class PostServiceImpl extends ServiceImpl<PostDao, PostEntity> implements
      */
     private void checkUserStatus(AppUserEntity user){
         if(user.getStatus().equals(Constant.USER_BANNER)){
-            throw new LinfengException(Constant.USER_BANNER_MSG,Constant.USER_BANNER_CODE);
+            throw new Exception(Constant.USER_BANNER_MSG,Constant.USER_BANNER_CODE);
         }
     }
     /**

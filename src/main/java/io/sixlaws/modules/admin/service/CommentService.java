@@ -20,13 +20,7 @@ import io.sixlaws.modules.admin.entity.CommentEntity;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 
- *
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-24 21:29:22
- */
+
 public interface CommentService extends IService<CommentEntity> {
 
     PageUtils queryPage(Map<String, Object> params);

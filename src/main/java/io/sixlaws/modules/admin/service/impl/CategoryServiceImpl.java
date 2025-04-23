@@ -12,7 +12,7 @@
  */
 package io.sixlaws.modules.admin.service.impl;
 
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.modules.admin.entity.PostEntity;
 import io.sixlaws.modules.admin.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,17 +56,17 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
      * @param category
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void saveCategory(CategoryEntity category) {
         Integer count = this.lambdaQuery()
                 .eq(CategoryEntity::getCateName, category.getCateName())
                 .count();
         if (count > 0) {
-            throw new LinfengException("分类名不能重复");
+            throw new Exception("分类名不能重复");
         }
         boolean save = this.save(category);
         if(!save){
-            throw new LinfengException("分类保存失败");
+            throw new Exception("分类保存失败");
         }
     }
 
@@ -76,30 +76,30 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
      * @param list
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void deleteByIdList(List<Integer> list) {
         list.forEach(id -> {
             Integer count = postService.lambdaQuery().eq(PostEntity::getCut, id).count();
             if (count > 0) {
                 CategoryEntity category = this.getById(id);
-                throw new LinfengException(category.getCateName() + "分类下存在帖子未删除");
+                throw new Exception(category.getCateName() + "分类下存在帖子未删除");
             }
         });
         this.removeByIds(list);
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void updateCategory(CategoryEntity category) {
         Integer count = this.lambdaQuery()
                 .eq(CategoryEntity::getCateName, category.getCateName())
                 .count();
         if (count > 1) {
-            throw new LinfengException("分类名不能重复");
+            throw new Exception("分类名不能重复");
         }
         boolean update = this.updateById(category);
         if(!update){
-            throw new LinfengException("分类更新失败");
+            throw new Exception("分类更新失败");
         }
     }
 

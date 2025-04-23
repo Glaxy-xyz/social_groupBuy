@@ -19,13 +19,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-/**
- * 
- * 
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-25 18:51:22
- */
+
 @Data
 public class AppCommentResponse implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -19,13 +19,7 @@ import java.io.Serializable;
 
 import lombok.Data;
 
-/**
- * 
- * 
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-19 16:29:48
- */
+
 @Data
 @TableName("lf_system")
 public class SystemEntity implements Serializable {

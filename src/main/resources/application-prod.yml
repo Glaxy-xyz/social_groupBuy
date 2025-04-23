@@ -3,7 +3,7 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         druid:
             driver-class-name: com.mysql.cj.jdbc.Driver
-            url: jdbc:mysql://127.0.0.1:3306/linfengcommunity?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+            url: jdbc:mysql://127.0.0.1:3306/sixlawscommunity?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
             username: root
             password: yourpassword
             initial-size: 10
@@ -21,8 +21,8 @@ spring:
                 enabled: true
                 url-pattern: /druid/*
                 #数据库监控账号密码 线上环境需开启
-                login-username: linfengcommunity
-                login-password: linfengcommunity
+                login-username: sixlawscommunity
+                login-password: sixlawscommunity
             filter:
                 stat:
                     log-slow-sql: true
@@ -33,7 +33,7 @@ spring:
                         multi-statement-allow: true
 
 #swagger默认线上关闭  本地开启
-linfeng:
+sixlaws:
   swagger:
     enable: false
     version: 1.0

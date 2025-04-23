@@ -1,7 +1,7 @@
 
 package io.sixlaws.common.validator;
 
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -12,13 +12,13 @@ public abstract class Assert {
 
     public static void isBlank(String str, String message) {
         if (StringUtils.isBlank(str)) {
-            throw new LinfengException(message);
+            throw new Exception(message);
         }
     }
 
     public static void isNull(Object object, String message) {
         if (object == null) {
-            throw new LinfengException(message);
+            throw new Exception(message);
         }
     }
 }

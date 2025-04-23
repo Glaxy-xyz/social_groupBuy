@@ -20,7 +20,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.sixlaws.common.enums.GenderStatus;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.vo.*;
 import io.sixlaws.common.utils.*;
 import io.sixlaws.modules.admin.entity.PostEntity;
@@ -100,11 +100,11 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
 
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void ban(Integer id) {
         Integer status = this.lambdaQuery().eq(AppUserEntity::getUid, id).one().getStatus();
         if(status.equals(Constant.USER_BANNER)){
-            throw new LinfengException(Constant.USER_BANNER_MSG);
+            throw new Exception(Constant.USER_BANNER_MSG);
         }
         this.lambdaUpdate()
                 .set(AppUserEntity::getStatus, Constant.USER_BANNER)
@@ -114,11 +114,11 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void openBan(Integer id) {
         Integer status = this.lambdaQuery().eq(AppUserEntity::getUid, id).one().getStatus();
         if (status.equals(Constant.USER_NORMAL)) {
-            throw new LinfengException(Constant.USER_BANNER_MSG);
+            throw new Exception(Constant.USER_BANNER_MSG);
         }
         boolean update = this.lambdaUpdate()
                 .set(AppUserEntity::getStatus, Constant.USER_NORMAL)
@@ -126,7 +126,7 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
                 .eq(AppUserEntity::getUid, id)
                 .update();
         if(!update){
-            throw new LinfengException("解除失败");
+            throw new Exception("解除失败");
         }
     }
 
@@ -153,7 +153,7 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
      * @return 用户ID
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public Integer smsLogin(SmsLoginForm form, HttpServletRequest request) {
         AppUserEntity appUserEntity = this.lambdaQuery()
                 .eq(AppUserEntity::getMobile, form.getMobile())
@@ -161,17 +161,17 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
         String codeKey = Constant.SMS_PREFIX + form.getMobile();
         String s = redisUtils.get(codeKey);
         if (io.sixlaws.common.utils.ObjectUtil.isEmpty(s)) {
-            throw new LinfengException("请先发送验证码");
+            throw new Exception("请先发送验证码");
         }
         if (!s.equals(form.getCode())) {
-            throw new LinfengException("验证码错误");
+            throw new Exception("验证码错误");
         }
         String ip = IPUtils.getIpAddr(request);
         String cityInfo = IPUtils.getCityInfo(ip);
         if (ObjectUtil.isNotNull(appUserEntity)) {
             //登录
             if (appUserEntity.getStatus().equals(Constant.USER_BANNER)) {
-                throw new LinfengException(Constant.USER_BANNER_MSG,Constant.USER_BANNER_CODE);
+                throw new Exception(Constant.USER_BANNER_MSG,Constant.USER_BANNER_CODE);
             }
             appUserEntity.setCity(cityInfo);
             this.updateById(appUserEntity);
@@ -194,7 +194,7 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
                     .eq(AppUserEntity::getMobile, form.getMobile())
                     .one();
             if(ObjectUtil.isNull(user)){
-                throw new LinfengException("注册失败");
+                throw new Exception("注册失败");
             }
             //其他业务处理
             return user.getUid();
@@ -230,7 +230,7 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public void updateAppUserInfo(AppUserUpdateForm appUserUpdateForm, AppUserEntity user) {
         if (!ObjectUtil.isEmpty(appUserUpdateForm.getAvatar())) {
             user.setAvatar(appUserUpdateForm.getAvatar());
@@ -255,7 +255,7 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
 //        }
         boolean isFollow = followService.isFollowOrNot(user.getUid(), request.getId());
         if (isFollow) {
-            throw new LinfengException("不要重复关注哦");
+            throw new Exception("不要重复关注哦");
         }
         FollowEntity followEntity = new FollowEntity();
         followEntity.setUid(user.getUid());
@@ -328,7 +328,7 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
         }
         AppUserEntity userEntity = this.getById(uid);
         if(ObjectUtil.isNull(userEntity)){
-            throw new LinfengException("用户不存在");
+            throw new Exception("用户不存在");
         }
         AppUserInfoResponse response = new AppUserInfoResponse();
         BeanUtils.copyProperties(userEntity, response);
@@ -339,12 +339,12 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = java.lang.Exception.class)
     public Integer miniWxLogin(WxLoginForm form) {
 
         String openId = getOpenId(form.getCode());
         if(io.sixlaws.common.utils.ObjectUtil.isEmpty(openId)){
-            throw new LinfengException("请正确配置appId和密钥");
+            throw new Exception("请正确配置appId和密钥");
         }
         //根据openId获取数据库信息 判断用户是否登录
         AppUserEntity user = this.lambdaQuery()
@@ -352,7 +352,7 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
                 .one();
         if (ObjectUtil.isNotNull(user)) {
             if(user.getStatus().equals(Constant.USER_BANNER)){
-                throw new LinfengException(Constant.USER_BANNER_MSG,Constant.USER_BANNER_CODE);
+                throw new Exception(Constant.USER_BANNER_MSG,Constant.USER_BANNER_CODE);
             }
             //其他业务todo
             return user.getUid();
@@ -373,7 +373,7 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
                     .eq(AppUserEntity::getOpenid, openId)
                     .one();
             if(ObjectUtil.isNull(users)){
-                throw new LinfengException("注册失败");
+                throw new Exception("注册失败");
             }
             //其他业务todo
             return users.getUid();
@@ -443,7 +443,7 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
                 .eq(SystemEntity::getConfig, ConfigConstant.MINIAPP)
                 .one();
         if(system == null){
-            throw new LinfengException("后台配置项不存在");
+            throw new Exception("后台配置项不存在");
         }
         String appId = system.getValue();
         String secret = system.getExtend();

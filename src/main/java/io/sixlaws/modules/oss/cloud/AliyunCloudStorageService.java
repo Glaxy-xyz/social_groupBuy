@@ -1,7 +1,7 @@
 package io.sixlaws.modules.oss.cloud;
 
 import com.aliyun.oss.OSSClient;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -34,8 +34,8 @@ public class AliyunCloudStorageService extends CloudStorageService {
     public String upload(InputStream inputStream, String path) {
         try {
             client.putObject(config.getAliyunBucketName(), path, inputStream);
-        } catch (Exception e){
-            throw new LinfengException("上传文件失败，请检查配置信息", e);
+        } catch (java.lang.Exception e){
+            throw new Exception("上传文件失败，请检查配置信息", e);
         }
 
         return config.getAliyunDomain() + "/" + path;

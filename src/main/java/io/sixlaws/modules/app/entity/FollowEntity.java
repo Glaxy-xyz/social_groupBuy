@@ -18,13 +18,7 @@ import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
-/**
- * 
- * 
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-24 14:38:31
- */
+
 @Data
 @TableName("lf_follow")
 public class FollowEntity implements Serializable {

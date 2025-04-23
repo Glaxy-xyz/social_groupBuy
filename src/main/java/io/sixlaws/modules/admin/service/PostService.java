@@ -23,13 +23,7 @@ import io.sixlaws.modules.app.param.*;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 
- *
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-23 20:49:55
- */
+
 public interface PostService extends IService<PostEntity> {
 
     PageUtils queryPage(Map<String, Object> params);

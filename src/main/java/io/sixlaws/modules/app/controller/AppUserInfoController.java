@@ -34,12 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * APP登录接口
- *
- * @author linfeng
- * @date 2022/6/9 22:40
- */
+
 @RestController
 @RequestMapping("/app/user")
 @Api(tags = "APP登录接口")

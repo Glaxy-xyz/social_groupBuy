@@ -28,12 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
-/**
- *
- * @author linfeng
- * @date 2022/7/27 15:35
- *
- */
+
 @Api(tags = "用户端——评论")
 @RestController
 @RequestMapping("app/comment")

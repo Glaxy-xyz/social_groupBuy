@@ -19,13 +19,7 @@ import io.sixlaws.modules.admin.entity.LinkEntity;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 
- *
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-26 14:05:38
- */
+
 public interface LinkService extends IService<LinkEntity> {
 
     PageUtils queryPage(Map<String, Object> params);

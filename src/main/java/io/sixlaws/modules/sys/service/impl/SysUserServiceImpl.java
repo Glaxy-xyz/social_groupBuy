@@ -4,7 +4,7 @@ package io.sixlaws.modules.sys.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.utils.Constant;
 import io.sixlaws.common.utils.PageUtils;
 import io.sixlaws.common.utils.Query;
@@ -131,7 +131,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 
 		//判断是否越权
 		if(!roleIdList.containsAll(user.getRoleIdList())){
-			throw new LinfengException("新增用户所选角色，不是本人创建");
+			throw new Exception("新增用户所选角色，不是本人创建");
 		}
 	}
 }

@@ -18,13 +18,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-/**
- * 
- * 
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-20 12:10:43
- */
+
 @Mapper
 public interface AppUserDao extends BaseMapper<AppUserEntity> {
 

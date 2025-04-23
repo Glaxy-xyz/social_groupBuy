@@ -1,7 +1,7 @@
 
 package io.sixlaws.modules.sys.oauth2;
 
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 
 import java.security.MessageDigest;
 import java.util.UUID;
@@ -37,8 +37,8 @@ public class TokenGenerator {
             algorithm.update(param.getBytes());
             byte[] messageDigest = algorithm.digest();
             return toHexString(messageDigest);
-        } catch (Exception e) {
-            throw new LinfengException("生成Token失败", e);
+        } catch (java.lang.Exception e) {
+            throw new Exception("生成Token失败", e);
         }
     }
 }

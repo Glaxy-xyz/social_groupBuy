@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @author linfeng
- * @date 2022/9/4 10:15
- */
+
 @Api(tags = "用户端——分类")
 @RestController
 @RequestMapping("app/link")

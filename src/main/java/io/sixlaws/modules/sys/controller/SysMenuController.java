@@ -2,7 +2,7 @@
 package io.sixlaws.modules.sys.controller;
 
 import io.sixlaws.common.annotation.SysLog;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.utils.Constant;
 import io.sixlaws.common.utils.R;
 import io.sixlaws.modules.sys.entity.SysMenuEntity;
@@ -155,17 +155,17 @@ public class SysMenuController extends AbstractController {
 	 */
 	private void verifyForm(SysMenuEntity menu){
 		if(StringUtils.isBlank(menu.getName())){
-			throw new LinfengException("菜单名称不能为空");
+			throw new Exception("菜单名称不能为空");
 		}
 		
 		if(menu.getParentId() == null){
-			throw new LinfengException("上级菜单不能为空");
+			throw new Exception("上级菜单不能为空");
 		}
 		
 		//菜单
 		if(menu.getType() == Constant.MenuType.MENU.getValue()){
 			if(StringUtils.isBlank(menu.getUrl())){
-				throw new LinfengException("菜单URL不能为空");
+				throw new Exception("菜单URL不能为空");
 			}
 		}
 		
@@ -180,7 +180,7 @@ public class SysMenuController extends AbstractController {
 		if(menu.getType() == Constant.MenuType.CATALOG.getValue() ||
 				menu.getType() == Constant.MenuType.MENU.getValue()){
 			if(parentType != Constant.MenuType.CATALOG.getValue()){
-				throw new LinfengException("上级菜单只能为目录类型");
+				throw new Exception("上级菜单只能为目录类型");
 			}
 			return ;
 		}
@@ -188,7 +188,7 @@ public class SysMenuController extends AbstractController {
 		//按钮
 		if(menu.getType() == Constant.MenuType.BUTTON.getValue()){
 			if(parentType != Constant.MenuType.MENU.getValue()){
-				throw new LinfengException("上级菜单只能为菜单类型");
+				throw new Exception("上级菜单只能为菜单类型");
 			}
 			return ;
 		}

@@ -16,11 +16,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * @author Jl.Yu
- * @email linfengtech001@163.com
- * @date 2022-10-08 13:51:43
- */
+
 @Data
 public class AppUserRankResponse implements Serializable {
 	private static final long serialVersionUID = 1L;

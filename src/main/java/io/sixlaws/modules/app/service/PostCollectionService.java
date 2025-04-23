@@ -20,13 +20,7 @@ import io.sixlaws.modules.app.param.AddCollectionForm;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 
- *
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-24 20:49:32
- */
+
 public interface PostCollectionService extends IService<PostCollectionEntity> {
 
     PageUtils queryPage(Map<String, Object> params);

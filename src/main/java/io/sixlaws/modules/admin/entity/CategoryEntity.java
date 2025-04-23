@@ -19,13 +19,7 @@ import java.io.Serializable;
 
 import lombok.Data;
 
-/**
- * 
- * 
- * @author linfeng
- * @email 3582996245@qq.com
- * @date 2022-01-21 14:32:52
- */
+
 @Data
 @TableName("lf_category")
 public class CategoryEntity implements Serializable {

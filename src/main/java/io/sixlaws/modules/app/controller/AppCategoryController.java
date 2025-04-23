@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/**
- * @author linfeng
- * @date 2022/9/4 10:06
- */
+
 @Api(tags = "用户端——分类")
 @RestController
 @RequestMapping("app/category")

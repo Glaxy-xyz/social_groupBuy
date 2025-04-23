@@ -28,12 +28,7 @@ import io.sixlaws.common.utils.R;
 
 
 
-/**
- * 
- * @author linfeng
- * @email 2445465217@qq.com
- * @date 2022-01-19 16:29:48
- */
+
 @Api(tags = "管理端——获取配置接口")
 @RestController
 @RequestMapping("admin/system")

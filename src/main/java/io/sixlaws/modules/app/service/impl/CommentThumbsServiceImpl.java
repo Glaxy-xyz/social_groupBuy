@@ -13,7 +13,7 @@ package io.sixlaws.modules.app.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.utils.DateUtil;
 import io.sixlaws.modules.admin.entity.AppUserEntity;
 import io.sixlaws.modules.app.param.AddThumbsForm;
@@ -79,7 +79,7 @@ public class CommentThumbsServiceImpl extends ServiceImpl<CommentThumbsDao, Comm
         .eq(CommentThumbsEntity::getCId,request.getId())
         .eq(CommentThumbsEntity::getUid,user.getUid()));
         if(ObjectUtil.isNotNull(one)){
-            throw new LinfengException("请勿重复点赞");
+            throw new Exception("请勿重复点赞");
         }
         CommentThumbsEntity ct=new CommentThumbsEntity();
         ct.setUid(user.getUid());
@@ -87,7 +87,7 @@ public class CommentThumbsServiceImpl extends ServiceImpl<CommentThumbsDao, Comm
         ct.setCreateTime(DateUtil.nowDateTime());
         boolean save = this.save(ct);
         if(!save){
-            throw new LinfengException("点赞失败");
+            throw new Exception("点赞失败");
         }
     }
 

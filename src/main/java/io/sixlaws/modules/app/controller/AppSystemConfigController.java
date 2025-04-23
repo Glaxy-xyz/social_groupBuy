@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @author linfeng
- * @date 2022/8/17 12:07
- */
+
 @Api(tags = "用户端——系统配置")
 @RestController
 @RequestMapping("app/system")

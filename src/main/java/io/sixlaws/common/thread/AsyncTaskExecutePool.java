@@ -20,11 +20,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
-/**
- * 异步任务线程池装配类
- * @author linfeng
- * @date 2022/2/20 22:04
- */
+
 @Slf4j
 @Configuration
 public class AsyncTaskExecutePool implements AsyncConfigurer {

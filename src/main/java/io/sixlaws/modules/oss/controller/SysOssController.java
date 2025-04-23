@@ -1,7 +1,7 @@
 package io.sixlaws.modules.oss.controller;
 
 import com.google.gson.Gson;
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.utils.*;
 import io.sixlaws.common.validator.ValidatorUtils;
 import io.sixlaws.common.validator.group.AliyunGroup;
@@ -91,9 +91,9 @@ public class SysOssController {
 	@ApiOperation("上传文件")
 	@PostMapping("/upload")
 	@RequiresPermissions("sys:oss:all")
-	public R upload(@RequestParam("file") MultipartFile file) throws Exception {
+	public R upload(@RequestParam("file") MultipartFile file) throws java.lang.Exception {
 		if (file.isEmpty()) {
-			throw new LinfengException("上传文件不能为空");
+			throw new Exception("上传文件不能为空");
 		}
 
 		FileCheckUtil.checkSize(maxSize, file.getSize());

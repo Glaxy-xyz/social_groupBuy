@@ -11,7 +11,7 @@
  */
 package io.sixlaws.modules.app.controller;
 
-import io.sixlaws.common.exception.LinfengException;
+import io.sixlaws.common.exception.Exception;
 import io.sixlaws.common.utils.FileCheckUtil;
 import io.sixlaws.common.utils.R;
 import io.sixlaws.modules.oss.cloud.OSSFactory;
@@ -47,9 +47,9 @@ public class AppOssController {
 
 	@ApiOperation("APP端文件上传")
 	@PostMapping("/upload")
-	public R upload(@RequestParam("Image") MultipartFile file) throws Exception {
+	public R upload(@RequestParam("Image") MultipartFile file) throws java.lang.Exception {
 		if (file.isEmpty()) {
-			throw new LinfengException("上传文件不能为空");
+			throw new Exception("上传文件不能为空");
 		}
 		FileCheckUtil.checkSize(maxSize, file.getSize());
 		//上传文件
